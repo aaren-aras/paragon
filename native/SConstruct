@@ -1,0 +1,19 @@
+import os
+
+env = Environment()
+
+env.Append(CPPPATH=[
+    'godot-cpp/include',
+    'godot-cpp/gen/include',
+    'godot-cpp/godot_headers'
+])
+
+env.Append(LIBPATH=['godot-cpp/bin'])
+env.Append(LIBS=['godot-cpp'])
+
+sources = Glob('src/*.cpp')
+
+env.SharedLibrary(
+    target='paragon',
+    source=sources
+)
