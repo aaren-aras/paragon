@@ -1,19 +1,20 @@
 import os
 
-env = Environment()
+env = SConscript("godot-cpp/SConstruct")
 
-env.Append(CPPPATH=[
-    'godot-cpp/include',
-    'godot-cpp/gen/include',
-    'godot-cpp/godot_headers'
-])
+env.Append(CPPPATH=["src/"])
 
-env.Append(LIBPATH=['godot-cpp/bin'])
-env.Append(LIBS=['godot-cpp'])
+sources = Glob("src/*.cpp")
 
-sources = Glob('src/*.cpp')
+if env["platform"] == "windows":
+    library = env.SharedLibrary(
+        "target/paragon{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        source=sources,
+    )
+else:
+    library = env.SharedLibrary(
+        "target/paragon{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        source=sources,
+    )
 
-env.SharedLibrary(
-    target='paragon',
-    source=sources
-)
+Default(library)
