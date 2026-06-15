@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqbdg3w68bwdc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8vuu"]
+radius = 20.0
+height = 60.0
+
+[node name="Player" type="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u8vuu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 60.0
+pivot_offset = Vector2(-20, -60)
+metadata/_edit_use_anchors_ = true

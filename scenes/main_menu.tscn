@@ -1,5 +1,17 @@
-[gd_scene format=3 uid="uid://b4lu1grudno6s"]
+[gd_scene load_steps=2 format=3 uid="uid://b4lu1grudno6s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vue75"]
 
 [node name="MainMenu" type="MainMenu"]
 offset_right = 1154.0
 offset_bottom = 650.0
+
+[node name="Player" type="Player" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_vue75")
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
