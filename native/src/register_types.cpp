@@ -1,6 +1,7 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/godot.hpp>
 
+#include "main_menu.h"
 #include "player.h"
 #include "boss.h"
 
@@ -9,6 +10,7 @@ using namespace godot;
 void initialize_paragon(ModuleInitializationLevel level) {
     if (level != MODULE_INITIALIZATION_LEVEL_SCENE) return;
 
+    ClassDB::register_class<MainMenu>();
     ClassDB::register_class<Player>();
     ClassDB::register_class<Boss>();
 }

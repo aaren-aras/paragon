@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="PARAGON"
+run/main_scene="uid://b4lu1grudno6s"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
