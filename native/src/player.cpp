@@ -13,6 +13,7 @@ namespace godot {
 
     void Player::_ready() {
         UtilityFunctions::print("PARAGON: Player ready!");
+        anim_player = get_node<AnimationPlayer>("AnimationPlayer");
     }
 
     void Player::_physics_process(double delta) {
@@ -55,6 +56,26 @@ namespace godot {
             roll_timer = roll_duration;
             roll_direction = direction;
             UtilityFunctions::print("PARAGON: Roll!");
+        }
+
+        if (anim_player != nullptr) {
+            if (Math::abs(velocity.x) > 1.0f && is_on_floor()) {
+                if (anim_player->get_current_animation() != "walk") {
+                    anim_player->play("walk");
+                }
+            }
+            //else if (is_on_floor()) {
+            //    if (anim_player->get_current_animation() != "idle") {
+            //        UtilityFunctions::print("PARAGON: Playing idle");
+            //        anim_player->play("idle");
+            //    }
+            //}
+            else if (is_on_floor()) {
+                if (anim_player->get_current_animation() != "RESET") {
+                    anim_player->play("RESET");
+
+                }
+            }
         }
 
         set_velocity(velocity);

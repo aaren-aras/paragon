@@ -8,10 +8,18 @@ size = Vector2(1143, 20)
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2venv")]
-position = Vector2(143, 576)
+position = Vector2(230, 205)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576.5, 630)
+position = Vector2(575, 608)
 shape = SubResource("RectangleShape2D_2venv")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = 2.0
+offset_top = 622.0
+offset_right = 1148.0
+offset_bottom = 642.0
+color = Color(0, 0, 0, 1)

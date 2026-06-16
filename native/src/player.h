@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <godot_cpp/classes/character_body2d.hpp>
+#include <godot_cpp/classes/animation_player.hpp>
 #include <godot_cpp/classes/input.hpp>
 
 namespace godot {
@@ -22,6 +23,8 @@ namespace godot {
         float roll_duration = 0.3f;
         float roll_timer = 0.0f;
         float roll_direction = 1.0f;
+
+        AnimationPlayer* anim_player = nullptr;
     
     public:
         Player();
