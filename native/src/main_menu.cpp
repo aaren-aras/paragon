@@ -52,7 +52,7 @@ namespace godot {
 
     void MainMenu::_on_new_game_pressed() {
         UtilityFunctions::print("PARAGON: Starting new game...");
-        get_tree()->change_scene_to_file("res://scenes/test_level.tscn");
+        get_tree()->change_scene_to_file("res://scenes/test_model.tscn");
     }
 
     void MainMenu::_on_quit_pressed() {

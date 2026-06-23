@@ -2,8 +2,10 @@
 #define PLAYER_H
 
 #include <godot_cpp/classes/character_body2d.hpp>
+#include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/classes/animation_player.hpp>
 #include <godot_cpp/classes/input.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 
 namespace godot {
 
@@ -25,6 +27,7 @@ namespace godot {
         float roll_direction = 1.0f;
 
         AnimationPlayer* anim_player = nullptr;
+        Node3D* model = nullptr;
     
     public:
         Player();

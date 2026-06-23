@@ -13,10 +13,39 @@ namespace godot {
 
     void Player::_ready() {
         UtilityFunctions::print("PARAGON: Player ready!");
-        anim_player = get_node<AnimationPlayer>("AnimationPlayer");
+
+        SubViewport* viewport = get_node<SubViewport>(
+            "SubViewportContainer/SubViewport"
+        );
+        if (viewport == nullptr) {
+            UtilityFunctions::print("PARAGON: ERROR - SubViewport not found!");
+            return;
+        }
+        UtilityFunctions::print("PARAGON: SubViewport found!");
+
+        model = viewport->get_node<Node3D>("CharacterBody3D");
+        if (model == nullptr) {
+            UtilityFunctions::print("PARAGON: ERROR - Model not found!");
+        }
+        else {
+            UtilityFunctions::print("PARAGON: Model found!");
+        }
+
+        anim_player = viewport->get_node<AnimationPlayer>(
+            "CharacterBody3D/UAL1_Standard/AnimationPlayer"
+        );
+        if (anim_player == nullptr) {
+            UtilityFunctions::print("PARAGON: ERROR - AnimationPlayer not found!");
+        }
+        else {
+            UtilityFunctions::print("PARAGON: AnimationPlayer found!");
+        }
     }
 
     void Player::_physics_process(double delta) {
+        //if (Engine::get_singleton()->is_editor_hint()) return;
+        //UtilityFunctions::print("PARAGON: physics running");
+
         if (Engine::get_singleton()->is_editor_hint()) return;
 
         Input* input = Input::get_singleton();
@@ -58,24 +87,35 @@ namespace godot {
             UtilityFunctions::print("PARAGON: Roll!");
         }
 
+        if (model != nullptr) {
+            if (direction > 0.0f) {
+                model->set_rotation(Vector3(0, Math::deg_to_rad(90.0f), 0));
+            }
+            else if (direction < 0.0f) {
+                model->set_rotation(Vector3(0, Math::deg_to_rad(-90.0f), 0));
+            }
+        }
+
         if (anim_player != nullptr) {
             if (Math::abs(velocity.x) > 1.0f && is_on_floor()) {
-                if (anim_player->get_current_animation() != "walk") {
-                    anim_player->play("walk");
+                if (anim_player->get_current_animation() != "Walk") {
+                    anim_player->play("Walk");
                 }
             }
-            //else if (is_on_floor()) {
-            //    if (anim_player->get_current_animation() != "idle") {
-            //        UtilityFunctions::print("PARAGON: Playing idle");
-            //        anim_player->play("idle");
-            //    }
-            //}
             else if (is_on_floor()) {
-                if (anim_player->get_current_animation() != "RESET") {
-                    anim_player->play("RESET");
+                if (anim_player->get_current_animation() != "Idle") {
+                    UtilityFunctions::print("PARAGON: Playing idle");
+                    anim_player->play("Idle");
+                    UtilityFunctions::print(String("PARAGON: Current anim: ") + anim_player->get_current_animation());
 
                 }
             }
+            //else if (is_on_floor()) {
+            //    if (anim_player->get_current_animation() != "RESET") {
+            //        anim_player->play("RESET");
+
+            //    }
+            //}
         }
 
         set_velocity(velocity);

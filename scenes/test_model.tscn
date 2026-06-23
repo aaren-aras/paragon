@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cyfw8pna1oiwj"]
+
+[ext_resource type="PackedScene" uid="uid://celbmcqd5c8gk" path="res://scenes/player2.tscn" id="1_8bi85"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uekp"]
+size = Vector2(318, 899)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bi85"]
+size = Vector2(2290, 154)
+
+[node name="Node2D" type="Node2D" unique_id=1313878882]
+
+[node name="Player" type="Player" parent="." unique_id=454016028]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=482919287]
+position = Vector2(-19, -465.5)
+shape = SubResource("RectangleShape2D_3uekp")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player" unique_id=99879480]
+offset_left = -503.0
+offset_top = -1032.0
+offset_right = 521.0
+offset_bottom = -8.0
+
+[node name="SubViewport" type="SubViewport" parent="Player/SubViewportContainer" unique_id=1948986307]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="CharacterBody3D" parent="Player/SubViewportContainer/SubViewport" unique_id=1051987974 instance=ExtResource("1_8bi85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03564453, -0.010018766, -0.00015640259)
+
+[node name="Camera3D" type="Camera3D" parent="Player/SubViewportContainer/SubViewport" unique_id=550629494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004574895, 0.99513113, 3.1906362)
+projection = 1
+fov = 50.0
+size = 2.039
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/SubViewportContainer/SubViewport" unique_id=1795938748]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=822651142]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1345694065]
+position = Vector2(-34, 75)
+shape = SubResource("RectangleShape2D_8bi85")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1630642491]
+offset_left = -1188.0
+offset_right = 1124.0
+offset_bottom = 115.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1500449814]
+position = Vector2(-33, -566)
+zoom = Vector2(0.5, 0.5)
