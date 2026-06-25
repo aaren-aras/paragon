@@ -2,10 +2,12 @@
 #define PLAYER_H
 
 #include <godot_cpp/classes/character_body2d.hpp>
-#include <godot_cpp/classes/sub_viewport.hpp>
-#include <godot_cpp/classes/animation_player.hpp>
 #include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/sub_viewport.hpp>
+#include <godot_cpp/classes/animation_player.hpp>
+#include <godot_cpp/classes/animation_tree.hpp>
+#include <godot_cpp/classes/animation_node_state_machine_playback.hpp>
 
 namespace godot {
 
@@ -17,7 +19,7 @@ namespace godot {
     
     private:
         float speed = 200.0f;
-        float jump_velocity = -400.0f;
+        float jump_velocity = -600.0f; // y-axis is flipped (increases downward)
         float gravity = 980.0f;
 
         bool is_rolling = false;
@@ -26,8 +28,12 @@ namespace godot {
         float roll_timer = 0.0f;
         float roll_direction = 1.0f;
 
-        AnimationPlayer* anim_player = nullptr;
+        bool initialized = false;
+        bool must_finish_anim = false;
+
         Node3D* model = nullptr;
+        //AnimationPlayer* anim_player = nullptr;
+        AnimationTree* anim_tree = nullptr;
     
     public:
         Player();

@@ -29,7 +29,7 @@ size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 
 [node name="CharacterBody3D" parent="Player/SubViewportContainer/SubViewport" unique_id=1051987974 instance=ExtResource("1_8bi85")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03564453, -0.010018766, -0.00015640259)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.03564453, -0.010018766, -0.00015640259)
 
 [node name="Camera3D" type="Camera3D" parent="Player/SubViewportContainer/SubViewport" unique_id=550629494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004574895, 0.99513113, 3.1906362)
@@ -38,7 +38,6 @@ fov = 50.0
 size = 2.039
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/SubViewportContainer/SubViewport" unique_id=1795938748]
-visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=822651142]
 
